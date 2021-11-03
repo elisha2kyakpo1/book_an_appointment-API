@@ -1,5 +1,4 @@
 class DoctorsController < ApplicationController
-  before_action :authenticate_api_v1_doctor!
 
   def create
     @user = get_current_user()
