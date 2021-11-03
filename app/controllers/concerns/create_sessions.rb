@@ -1,4 +1,4 @@
-module CreateSession
+module CreateSessions
   extend ActiveSupport::Concern
   require 'json_web_token'
 
