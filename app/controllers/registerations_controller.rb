@@ -1,4 +1,4 @@
-class Auth::RegistrationsController < ApplicationController
+class RegistrationsController < ApplicationController
   before_action :authenticate_user, only: :destroy
   include CreateSession
 
