@@ -10,8 +10,8 @@ module Api
         @user = get_current_user()
         params[:user_id] = @user.id
     
-        @doctor = Doctor.create(post_params())
-        respond_to_post()
+        @doctor = Doctor.create(doctor_params())
+        respond_to_doctor()
       end
     
       private def doctor_params
@@ -20,7 +20,7 @@ module Api
     
       private def respond_to_doctor()
         if @doctor.valid?()
-          doctor_serializer = PostSerializer.new(doctor: @doctor, user: @user)
+          doctor_serializer = DoctorSerializer.new(doctor: @doctor, user: @user)
           render json: doctor_serializer.serialize_new_doctor()
         else
           render json: { errors: doctor.errors }, status: 400

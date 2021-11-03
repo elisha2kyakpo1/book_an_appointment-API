@@ -1,4 +1,4 @@
-class doctorSerializer
+class DoctorSerializer
 
   def initialize(doctor: nil, user:)
     @doctor = doctor
