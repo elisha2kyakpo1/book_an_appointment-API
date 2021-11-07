@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController
   before_action :authenticate_user, only: :destroy
-  include CreateSession
+  include CreateSessions
 
   def create
     @user = User.new(registration_params)

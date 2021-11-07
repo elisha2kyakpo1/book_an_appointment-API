@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::API
   before_action :authenticate_request
    attr_reader :current_client
-  include AuthenticateRequest
-  before_action :current_user
+  # include AuthenticateRequest
+  # before_action :current_user
  
    private
  
