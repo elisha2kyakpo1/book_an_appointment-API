@@ -4,6 +4,8 @@ class Doctor < ApplicationRecord
   has_one_attached :image
   has_many :clients, through: :appointments, foreign_key: :client_id, dependent: :destroy, class_name: 'User'
 
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :name, presence: true, uniqueness: true
   validates :image, {
     presence: true
   }
