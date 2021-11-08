@@ -1,5 +1,5 @@
 class RegistrationsController < ApplicationController
-  before_action :authenticate_user, only: :destroy
+  before_action :authenticate_request, only: :destroy
   include CreateSessions
 
   def create
