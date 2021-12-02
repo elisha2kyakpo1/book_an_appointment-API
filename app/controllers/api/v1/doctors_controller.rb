@@ -11,9 +11,8 @@ module Api
         params[:user_id] = @user.id
     
         image = Cloudinary::Uploader.upload(params[:image])
-        video = Cloudinary::Uploader.upload(params[:video], :resource_type => :video)
         @doctor = Doctor.create!(name: params[:name], email: params[:email], phone: params[:phone], about: params[:about],
-                                 image: image['url']), video: video["url"])
+                                 image: image['url'])
         respond_to_doctor()
       end
     
