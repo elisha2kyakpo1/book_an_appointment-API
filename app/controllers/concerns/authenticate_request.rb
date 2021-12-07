@@ -3,7 +3,10 @@ module AuthenticateRequest
   require 'json_web_token'
 
   def authenticate_user
-    return render status: :unauthorized, json: {errors: [I18n.t('errors.controllers.unauthenticated')]} unless current_user
+    unless current_user
+      render status: :unauthorized,
+             json: { errors: [I18n.t('errors.controllers.unauthenticated')] }
+    end
   end
 
   def current_user
@@ -26,7 +29,7 @@ module AuthenticateRequest
       begin
         @decoded_token ||= JsonWebToken.decode(header)
       rescue Error => e
-        return render json: {errors: [e.message]}, status: :unauthorized
+        render json: { errors: [e.message] }, status: :unauthorized
       end
     end
   end

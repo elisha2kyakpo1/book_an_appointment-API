@@ -9,9 +9,9 @@ class RegistrationsController < ApplicationController
       @token = jwt_session_create @user.id
       if @token
         @token = "Bearer #{@token}"
-        return success_user_created
+        success_user_created
       else
-        return error_token_create
+        error_token_create
       end
     else
       error_user_save
@@ -24,14 +24,14 @@ class RegistrationsController < ApplicationController
   end
 
   protected
-  
+
   def success_user_destroy
     render status: :no_content, json: {}
   end
 
   def success_user_created
     response.headers['Authorization'] = "Bearer #{@token}"
-    render status: :created, template: "auth/auth"
+    render status: :created, template: 'auth/auth'
   end
 
   def error_token_create

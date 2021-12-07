@@ -13,8 +13,8 @@ class Doctor < ApplicationRecord
   validates :image, {
     presence: true
   }
-  
+
   def get_image_url
-    url_for(self.image)
+    url_for(image)
   end
 end
